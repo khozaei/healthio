@@ -150,20 +150,6 @@ func (pu *PatientUpdate) ClearIdentityCode() *PatientUpdate {
 	return pu
 }
 
-// SetCreatedAt sets the "created_at" field.
-func (pu *PatientUpdate) SetCreatedAt(t time.Time) *PatientUpdate {
-	pu.mutation.SetCreatedAt(t)
-	return pu
-}
-
-// SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (pu *PatientUpdate) SetNillableCreatedAt(t *time.Time) *PatientUpdate {
-	if t != nil {
-		pu.SetCreatedAt(*t)
-	}
-	return pu
-}
-
 // SetUpdatedAt sets the "updated_at" field.
 func (pu *PatientUpdate) SetUpdatedAt(t time.Time) *PatientUpdate {
 	pu.mutation.SetUpdatedAt(t)
@@ -352,9 +338,6 @@ func (pu *PatientUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	}
 	if pu.mutation.IdentityCodeCleared() {
 		_spec.ClearField(patient.FieldIdentityCode, field.TypeString)
-	}
-	if value, ok := pu.mutation.CreatedAt(); ok {
-		_spec.SetField(patient.FieldCreatedAt, field.TypeTime, value)
 	}
 	if value, ok := pu.mutation.UpdatedAt(); ok {
 		_spec.SetField(patient.FieldUpdatedAt, field.TypeTime, value)
@@ -598,20 +581,6 @@ func (puo *PatientUpdateOne) ClearIdentityCode() *PatientUpdateOne {
 	return puo
 }
 
-// SetCreatedAt sets the "created_at" field.
-func (puo *PatientUpdateOne) SetCreatedAt(t time.Time) *PatientUpdateOne {
-	puo.mutation.SetCreatedAt(t)
-	return puo
-}
-
-// SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (puo *PatientUpdateOne) SetNillableCreatedAt(t *time.Time) *PatientUpdateOne {
-	if t != nil {
-		puo.SetCreatedAt(*t)
-	}
-	return puo
-}
-
 // SetUpdatedAt sets the "updated_at" field.
 func (puo *PatientUpdateOne) SetUpdatedAt(t time.Time) *PatientUpdateOne {
 	puo.mutation.SetUpdatedAt(t)
@@ -830,9 +799,6 @@ func (puo *PatientUpdateOne) sqlSave(ctx context.Context) (_node *Patient, err e
 	}
 	if puo.mutation.IdentityCodeCleared() {
 		_spec.ClearField(patient.FieldIdentityCode, field.TypeString)
-	}
-	if value, ok := puo.mutation.CreatedAt(); ok {
-		_spec.SetField(patient.FieldCreatedAt, field.TypeTime, value)
 	}
 	if value, ok := puo.mutation.UpdatedAt(); ok {
 		_spec.SetField(patient.FieldUpdatedAt, field.TypeTime, value)

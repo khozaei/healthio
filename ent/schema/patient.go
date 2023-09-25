@@ -22,7 +22,7 @@ func (Patient) Fields() []ent.Field {
 		field.String("phone").Optional(),
 		field.String("national_code").Unique().Optional(),
 		field.String("identity_code").Unique().Optional(),
-		field.Time("created_at").Default(time.Now()),
+		field.Time("created_at").Immutable().Default(time.Now()),
 		field.Time("updated_at").Optional(),
 		field.Time("deleted_at").Optional(),
 	}
