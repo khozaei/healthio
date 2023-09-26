@@ -11,12 +11,12 @@ import (
 )
 
 func main() {
-	client, err := ent.Open("mysql", "root:252@/healthiodb")
+	client, err := ent.Open("mysql", "root:252@/healthiodb?parseTime=true")
 	if err != nil {
 		log.Fatalf("failed opening connection to mysql: %v", err)
 	}
 
-//	defer client.Close()
+	//	defer client.Close()
 	// Run the auto migration tool.
 	ctx := context.Background()
 	if err := client.Schema.Create(ctx); err != nil {

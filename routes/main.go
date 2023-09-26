@@ -39,4 +39,5 @@ func SetHandlerConfig(conf HandlerConfig) {
 func setRoutes() {
 	v1 := router.Group("v1")
 	setPatientRoutes(v1)
+	setReceptionRoutes(v1)
 }
